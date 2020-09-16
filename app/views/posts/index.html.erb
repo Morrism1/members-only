@@ -2,26 +2,22 @@
 
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Post</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+  <section>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.post %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <article>
+       <p><%= post.post %></p>
+      <% if user_signed_in? %>
+        <div>Written by: <span><%= post.user.name %></span></div>
+        <ul>
+        <li><%= link_to 'Show', post %></li>
+        <li><%= link_to 'Edit', edit_post_path(post) %></li>
+        <li><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
+        <% end %>
+      </article>
     <% end %>
-  </tbody>
-</table>
-
+  </section>
 <br>
 
 <%= link_to 'New Post', new_post_path %>
