@@ -4,7 +4,7 @@
 
     <article class="card mb-2">
       <div class="card-body">
-          <h5 class="card-title">Component</h5>
+          <h5 class="card-title"><%= post.title %></h5>
           <% if user_signed_in? %>
             <h6 class="card-subtitle mb-2 text-muted">Written by: <span><%= post.user.name %></span></h6>
           <% end %>
