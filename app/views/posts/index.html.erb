@@ -5,16 +5,10 @@
     <article class="card mb-2">
       <div class="card-body">
           <h5 class="card-title"><%= post.title %></h5>
-          <% if logged_in? %>
-            <h6 class="card-subtitle mb-2 text-muted">Written by: <span><%= post.user.name %></span></h6>
-          <% end %>
+     <%= post_author(post) %>
           <p class="card-text"><%= post.post %></p>
       
-      <% if logged_in? %>
-          <%= link_to 'Show', post, class: "card-link" %>
-          <%= link_to 'Edit', edit_post_path(post), class: "card-link" %>
-          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
-      <% end %>
+      <%= logged_in_links(post) %>
       </div>
     </article>
 
