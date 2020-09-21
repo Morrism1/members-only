@@ -1,0 +1,15 @@
+<section class="container">
+  <div class="d-flex justify-content-between align-items-center"><h1>Posts</h1><%= link_to 'New Post', new_post_path, class: 'btn btn-primary'%></div>
+  <% @posts.each do |post| %>
+
+    <article class="card mb-2">
+      <div class="card-body">
+          <h5 class="card-title"><%= post.title %></h5>
+     <%= post_author(post) %>
+          <p class="card-text"><%= post.post %></p>
+      </div>
+    </article>
+
+  <% end %>
+</section>
+

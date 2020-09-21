@@ -4,12 +4,47 @@
     <title>MembersOnly</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-light" role="navigation" aria-label="main navigation" style="background-color: #e3f2fd;">
+      <div class="navbar-brand">
+       <%= link_to 'MEMBERS-ONLY', root_path, class: "btn btn-transparent" %> 
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <% if logged_in? %>
+                  <%= link_to current_user.name, edit_user_registration_path, class: "mr-2" %>
+                  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0" %>
+              <% else %>
+                  <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-success my-2 my-sm-0" %>
+                  <%= link_to 'Sign In', new_user_session_path, class: "btn btn-outline-success my-2 my-sm-0" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <% if flash[:notice]%>
+      <div class="alert alert-success" role="alert">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+     <% if flash[:alert]%>
+      <div class="alert alert-danger" role="alert">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
