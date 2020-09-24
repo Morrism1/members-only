@@ -1,7 +1,6 @@
 module PostsHelper
   def logged_in_links(post)
     return unless current_user &.== post.user
-
     content_tag :div do
       (link_to 'Show', post, class: 'card-link') +
         (link_to 'Edit', edit_post_path(post), class: 'card-link') +
