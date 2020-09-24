@@ -7,7 +7,7 @@ module PostsHelper
         (link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link')
     end
   end
-
+  
   def post_author(post)
     content_tag(:h6, 'Written by: ' + post.user.name, class: ['card-subtitle mb-2 text-muted']) if logged_in?
   end
